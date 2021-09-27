@@ -1,0 +1,39 @@
+.navbar-container {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navbar-button{
+    float: left;
+}
+
+.navbar-button a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar-button a:hover:not(.active) {
+    background-color: #111;
+}
+
+.navbar-button-active{
+    background-color: #04AA6D;
+    float: left;
+}
+
+.navbar-button-active a {
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.menu-button{
+    
+}
