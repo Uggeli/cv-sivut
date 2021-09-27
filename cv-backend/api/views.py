@@ -1,11 +1,39 @@
 from .models import WeatherData, Recipe, Product, Ingredient
 from rest_framework import viewsets, permissions
 from rest_framework.authentication import BasicAuthentication, SessionAuthentication, TokenAuthentication
-from .serializers import WeatherDataSerializer, UserSerializer, GroupSerializer, RecipeSerializer
+from .serializers import WeatherDataSerializer, UserSerializer, GroupSerializer, RecipeSerializer, ProductSerializer, IngredientSerializer
 from datetime import datetime, timedelta
 from .weatherdata_utils import *
 from django.contrib.auth.models import User, Group
 
+
+class ProductMatchViewSet(viewsets.ModelViewSet):
+    serializer_class = ProductSerializer
+    authentication_classes = [TokenAuthentication, SessionAuthentication, BasicAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        headers = self.request.headers
+        search_term = headers['Finditem'] if 'Finditem' in headers else ''
+        if not search_term:
+            return []
+        search_terms = search_term.split(',')
+        return_list = []
+        for item in search_terms:
+            matching_ingredients = self.find_matching_ingredients(item)
+            matching_products = self.find_matching_products(matching_ingredients)
+            return_list += matching_products
+        return return_list
+        
+    def find_matching_ingredients(self, search_term):
+        return Ingredient.objects.filter(plural__contains = search_term) | Ingredient.objects.filter(basic__contains = search_term)
+
+    def find_matching_products(self, ingredients):
+        matching_products = []
+        for ingredient in ingredients:
+            matching_products += Product.objects.filter(ingredient_id = ingredient)
+        return matching_products
+        
 
 class WeatherDataViewSet(viewsets.ModelViewSet):
     serializer_class = WeatherDataSerializer
@@ -53,6 +81,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         headers = self.request.headers
+        print(headers)
 
         queryset = Recipe.objects.all().filter(
             category__contains=headers['category'] if 'category' in headers else ''

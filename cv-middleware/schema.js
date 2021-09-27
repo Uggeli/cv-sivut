@@ -45,6 +45,22 @@ const typeDefs = gql `
         instructions: String
     }
 
+    type Product {
+        id: ID
+	    category: String
+	    brand_name: String
+	    product_name: String
+	    ean_code: String
+	    price_wholenumber: Int
+	    price_decimal: Int
+	    price_unit:String
+    }
+
+    type Products {
+        id: ID
+        items: [Product]
+    }
+
     type Query {
         # airTemperature(place: String, start_time: String ,end_time: String) : AirTemperature
         airTemperatures(place: String, start_time: String ,end_time: String) : [WeatherData]
@@ -64,6 +80,8 @@ const typeDefs = gql `
         getRecipeByCategory(category: String): [Recipe]
         getRecipesByName(name: String): [Recipe]
         getRecipesByIngredient(ingredient: String): [Recipe]
+        GetProduct(search_term: String): [Product]
+        GetProducts(itemArray: [String]): [Products]
 
     }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
+
 const RecipeDisplay = ({category, image_link, ingredients, instructions, name}) =>{
     const [menuOpen, setmenuOpen] = useState(false)
 
@@ -11,6 +12,7 @@ const RecipeDisplay = ({category, image_link, ingredients, instructions, name}) 
 
     const showIngredients = () =>{
         const ingredient_list = ingredients.split('|')
+        console.log(ingredient_list)
         return ingredient_list.map((item) => <li>{item}</li>)
     }
 
@@ -19,12 +21,14 @@ const RecipeDisplay = ({category, image_link, ingredients, instructions, name}) 
         return ingredient_list.map((item) => <p>{item}</p>)
     }
 
+    
+
     return (
         <div className='divTableCell'>
             <button onClick={handleClick} className='recipe-button'>
                 {name}
             </button>
-            {menuOpen &&(
+            {!menuOpen &&(
                 <div>
                     Ainekset:
                     {showIngredients()}
@@ -40,3 +44,5 @@ const RecipeDisplay = ({category, image_link, ingredients, instructions, name}) 
 }
 
 export default RecipeDisplay
+
+

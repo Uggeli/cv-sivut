@@ -2,9 +2,10 @@ const { ApolloServer } = require('apollo-server');
 const typeDefs = require('./schema');
 const WeatherDataApi = require('./datasources/weatherDataApi');
 const RecipeApi = require('./datasources/RecipeApi');
+const ProductApi = require('./datasources/ProductApi');
 
-const resolvers = require('./resolvers')
-require('dotenv').config()
+const resolvers = require('./resolvers');
+require('dotenv').config();
 
 const myPlugin = {
     // Fires whenever a GraphQL request is received from a client.
@@ -34,15 +35,16 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     plugins: [
-        myPlugin
+        // myPlugin
       ],
     context: ({reg}) => {
-        console.log(reg)
+        // console.log(reg)
       
     },
     dataSources: () => ({
         weatherAPI: new WeatherDataApi(),
         RecipeApi: new RecipeApi(),
+        ProductApi: new ProductApi(),
     })
 });
 

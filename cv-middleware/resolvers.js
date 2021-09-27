@@ -51,5 +51,12 @@ module.exports = {
         getRecipesByIngredient: async (_, { ingredient }, { dataSources }) => {
             return dataSources.RecipeApi.GetRecipesByIngredient(ingredient)
         },
+        GetProduct: async (_, {search_term}, { dataSources }) => {
+            return dataSources.ProductApi.GetProduct(search_term)
+        },
+        GetProducts: async (_, {itemArray}, { dataSources}) => {
+            return dataSources.ProductApi.GetProducts(itemArray)
+        },
+
     }
 }
