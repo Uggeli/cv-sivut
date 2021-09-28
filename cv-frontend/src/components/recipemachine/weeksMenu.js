@@ -1,6 +1,6 @@
 import React from "react";
 import RecipeDisplay from "./recipe_display";
-import './recipemachine_styles.css'
+import '../../styles/recipemachine_styles.css'
 
 const WeeksMenu = ({selectedDays, breakfests, lunches, dinners}) => {
   

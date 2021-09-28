@@ -6,17 +6,20 @@ const Navbar = () => {
 	const location = useLocation().pathname
 	
 	const CheckIfActive = (page) =>{
-		// console.log(page)
 		if (page === location){
 			return 'navbar-button-active'
 		}
 		return 'navbar-button'
-		
 	}
+
+
 
 	return (
 		<div className='navbar-container'>
-			<li className={CheckIfActive('/')}>
+			<li className={location !== "/"
+				?'navbar-button-right'
+				:'navbar-button-right-active'
+			}>
 				<Link to="/">About</Link>
 			</li>
 			<li className={CheckIfActive('/Page1')}>

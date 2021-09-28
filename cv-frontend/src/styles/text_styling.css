@@ -1,0 +1,6 @@
+.text-container{
+    display: flexbox;
+    /* justify-content: center; */
+    text-align: justify;
+    margin: 10%;
+}

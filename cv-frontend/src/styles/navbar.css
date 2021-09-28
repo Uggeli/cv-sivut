@@ -10,7 +10,11 @@
     float: left;
 }
 
-.navbar-button a {
+.navbar-button-right{
+    float: right;
+}
+
+.navbar-button a, .navbar-button-right a {
     display: block;
     color: white;
     text-align: center;
@@ -18,7 +22,7 @@
     text-decoration: none;
 }
 
-.navbar-button a:hover:not(.active) {
+.navbar-button a:hover:not(.active), .navbar-button-right a:hover:not(.active) {
     background-color: #111;
 }
 
@@ -27,7 +31,12 @@
     float: left;
 }
 
-.navbar-button-active a {
+.navbar-button-right-active{
+    background-color: #04AA6D;
+    float: right;
+}
+
+.navbar-button-active a, .navbar-button-right-active a {
     display: block;
     color: white;
     padding: 14px 16px;

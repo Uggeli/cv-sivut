@@ -1,7 +1,7 @@
 import React from 'react';
-import WeeksMenu from './weeksMenu';
-import SearchBar from './search_bar';
-import { RECIPE } from '../../Queries/recipeQueries';
+import WeeksMenu from '../components/recipemachine/weeksMenu';
+import SearchBar from '../components/recipemachine/search_bar';
+import { RECIPE } from '../Queries/recipeQueries';
 import { useQuery } from '@apollo/client';
 
 class RecipeMachine extends React.Component{
@@ -15,8 +15,6 @@ class RecipeMachine extends React.Component{
     console.log(event)
   }
   
-
-
   render(){
   return (
     <div>

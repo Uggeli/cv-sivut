@@ -4,7 +4,7 @@ import About from './pages/navbar/about'
 import Page1 from './pages/navbar/page1'
 import Page2 from './pages/navbar/page2'
 import Page3 from './pages/navbar/page3'
-import RecipeMachine from "./components/recipemachine/RecipeMachine";
+import RecipeMachine from "./pages/RecipeMachine";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const client = new ApolloClient({
